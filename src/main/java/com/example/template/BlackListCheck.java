@@ -15,29 +15,37 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
 
+
+@Entity
 @Setter
 @Getter
-@Entity
-public class blackListCheck {
+public class BlackListCheck {
 
 	
 	 @Id
 	 @GeneratedValue
-	 private Long id;
-	 private String blackListMessage;
-	 private Customer customer;
+	 Long id;
+	 String customerName;
+	 String blackListMessage;	 
+	 
+	 
+	 public void blackListCheck() {
+		 Customer customer = new Customer();
+		 String customerName= customer.getCustomerName();
+		 customer.blacklistcheck=true;
+	 }
 	 
 	 @PostPersist
-	    private void publishDeliveryStart() {
+	    private void publishBlackListCheck() {
 	        KafkaTemplate kafkaTemplate = Application.applicationContext.getBean(KafkaTemplate.class);
 
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        String json = null;
 
-	        SurveyCompleted surveyCompleted = new SurveyCompleted();
+	        BlackListCheckCompleted blackListCheckCompleted = new BlackListCheckCompleted();
 	        try {
-	            BeanUtils.copyProperties(this, surveyCompleted);
-	            json = objectMapper.writeValueAsString(surveyCompleted);
+	            BeanUtils.copyProperties(this, blackListCheckCompleted);
+	            json = objectMapper.writeValueAsString(blackListCheckCompleted);
 	        } catch (JsonProcessingException e) {
 	            throw new RuntimeException("JSON format exception", e);
 	        }
