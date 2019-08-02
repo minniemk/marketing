@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.PostPersist;
+import javax.persistence.Transient;
 
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.BeanUtils;
@@ -26,6 +27,8 @@ public class EmailSent {
     private String customerName;
     private String customeremail;
     private String productDesc="새로운 제품이 등록되었습니다.";
+    
+    @Transient
     private ProductModified product;
  
     @PostPersist

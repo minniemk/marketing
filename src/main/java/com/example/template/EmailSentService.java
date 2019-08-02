@@ -17,7 +17,7 @@ public class EmailSentService {
     @Autowired
     EmailSentRepository emailSentRepository;
 
-    @KafkaListener(topics = "eventTopic")
+    @KafkaListener(topics = "eventTopic" , groupId="emailSvc")
     public void onListener(@Payload String message, ConsumerRecord<?, ?> consumerRecord) {
         System.out.println("##### listener : " + message);
 

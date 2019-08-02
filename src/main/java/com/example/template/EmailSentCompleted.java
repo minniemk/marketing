@@ -12,4 +12,8 @@ public class EmailSentCompleted {
     private String customerName;
     private String Message;
 	
+    public EmailSentCompleted(){
+        this.setType(this.getClass().getSimpleName());
+    }
+    
 }

@@ -8,8 +8,6 @@ import lombok.Setter;
 
 @Setter
 @Getter
-@NoArgsConstructor
-@Entity
 public class Customer {
 	String type ;
 	String stateMessage = "We found a customer violating against our policy";
