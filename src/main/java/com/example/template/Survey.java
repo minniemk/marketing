@@ -36,7 +36,7 @@ public class Survey {
         this.surveyMessage = surveyMessage;
     }
 
-    @PostPersist
+    @PostPersist //Survery에 insert 일어난후에 호출...
     private void publishDeliveryStart() {
         KafkaTemplate kafkaTemplate = Application.applicationContext.getBean(KafkaTemplate.class);
 

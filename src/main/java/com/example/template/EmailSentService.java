@@ -36,6 +36,13 @@ public class EmailSentService {
             if( productModified.getType().equals(ProductModified.class.getSimpleName())){
 
                 EmailSent email = new EmailSent();
+                
+                email.setCustomerName("Song Jun");
+                email.setCustomeremail("songjun@naver.com");
+                email.setProductDesc("새로운 제품이 등록되었습니다.");
+                
+       
+                
                 emailSentRepository.save(email);
 
             }

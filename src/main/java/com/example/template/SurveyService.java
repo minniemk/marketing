@@ -39,7 +39,7 @@ public class SurveyService {
                 survey.setCustomerName(deliveryCompleted.getCustomerName());
                 survey.setSurveyMessage("넉넉하게 수량 챙겨주세요");
 
-                surveyRepository.save(survey);
+                surveyRepository.save(survey);//Survery에 insert한다.
 
             }
 
